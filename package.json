@@ -1,0 +1,95 @@
+{
+  "name": "vscode-snippetsplus",
+  "displayName": "VSCode Snippets+",
+  "publisher": "KyfStore",
+  "description": "Create very useful code snippets along your coding journey. Have a file you run to build your project? Consider making a snippet for it with VSCode Snippets!",
+  "version": "1.0.4",
+  "repository": {
+    "url": "https://github.com/KyfStore/VSCode-Snippets.git"
+  },
+  "engines": {
+    "vscode": "^1.90.0"
+  },
+  "icon": "resources/logo.jpg",
+  "galleryBanner": {
+    "color": "#3e3e3e",
+    "theme": "dark"
+  },
+  "categories": [
+    "Snippets"
+  ],
+  "activationEvents": [
+    "onCommand:vscode-snippetsplus.cs",
+    "onCommand:vscode-snippetsplus.ds",
+    "onCommand:vscode-snippetsplus.brs",
+    "onCommand:vscode-snippetsplus.os"
+  ],
+  "main": "./extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "vscode-snippetsplus.cs",
+        "title": "VSCode Snippets+ | Create Snippet"
+      },
+      {
+        "command": "vscode-snippetsplus.ds",
+        "title": "VSCode Snippets+ | Delete Snippet"
+      },
+      {
+        "command": "vscode-snippetsplus.brs",
+        "title": "VSCode Snippets+ | Build/Run Snippet"
+      },
+      {
+        "command": "vscode-snippetsplus.os",
+        "title": "VSCode Snippets+ | Open Snippet"
+      },
+      {
+        "command": "vscode-snippetsplus.rs",
+        "title": "VScode Snippets+ | Rename Snippet"
+      }
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "snippetView",
+          "title": "Snippets",
+          "icon": "resources/snippets.svg"
+        }
+      ]
+    },
+    "views": {
+      "snippetView": [
+        {
+          "id": "snippetView",
+          "name": "Snippets"
+        }
+      ]
+    },
+    "menus": {
+      "view/item/context": [
+        {
+          "command": "vscode-snippetsplus.os",
+          "when": "view == snippetView && viewItem == snippetFile",
+          "group": "inline"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "pretest": "npm run lint",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/mocha": "^10.0.6",
+    "@types/node": "20.x",
+    "@types/vscode": "^1.90.0",
+    "@vscode/test-cli": "^0.0.9",
+    "@vscode/test-electron": "^2.4.0",
+    "eslint": "^8.57.0",
+    "typescript": "^5.4.5"
+  },
+  "dependencies": {
+    "axios": "^1.7.2"
+  }
+}
