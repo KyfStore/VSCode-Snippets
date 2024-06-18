@@ -89,7 +89,7 @@ class SnippetFileProvider {
             terminal.sendText(`python ${snippetUri.fsPath}`);
         } else if (snippetUri.fsPath.endsWith('.java')) {
             terminal.sendText(`javac ${snippetUri.fsPath}; cd \"${snippetFolder}\"; java ${path.basename(snippetUri.fsPath, '.java')}`);
-            terminal.sendText(`cmd /c del /Q ${path.basename(snippetUri.fsPath, ".java")}.class`);
+            terminal.sendText(`cmd /c del /Q *.class`);
         } else if (snippetUri.fsPath.endsWith('.cs')) {
             terminal.sendText(`dotnet run ${snippetUri.fsPath}`);
         } else if (snippetUri.fsPath.endsWith('.cpp')) {
@@ -106,6 +106,7 @@ class SnippetFileProvider {
             terminal.sendText(`ruby ${snippetUri.fsPath}`);
         } else if (snippetUri.fsPath.endsWith('.rs')) {
             terminal.sendText(`rustc ${snippetUri.fsPath} -o ${path.basename(snippetUri.fsPath, '.rs')}; cd \"${snippetFolder}\"; ./${path.basename(snippetUri.fsPath, '.rs')}.exe`);
+            terminal.sendText(`cmd /c del /Q *.exe`);
         } else if (snippetUri.fsPath.endsWith('.html')) {
             const snippetUriWithScheme = vscode.Uri.file(snippetUri.fsPath);
             await vscode.env.openExternal(snippetUriWithScheme);
@@ -146,7 +147,9 @@ async function ensureSnippetFolderExists(context) {
     }
 }
 
+
 async function activate(context) {
+
     await ensureSnippetFolderExists(context);
 
     const snippetProvider = new SnippetFileProvider(context);
@@ -155,8 +158,45 @@ async function activate(context) {
     context.subscriptions.push(
         vscode.commands.registerCommand('vscode-snippetsplus.cs', async function () {
             vscode.window.showInformationMessage('Welcome To VSCode Snippets!');
+
+            const config = vscode.workspace.getConfiguration("vscode-snippetsplus");
+            
             
             const fileTypes = ['Python', 'Java', 'NodeJS', 'HTML', 'C#', 'C++', 'C', 'Ruby', 'Rust', 'Batch', 'Bash', 'CMD'];
+            
+            const enabledFileTypes = [
+                { name: "Python", configKey: "pyIsEnabled" },
+                { name: "Java", configKey: "javaIsEnabled" },
+                { name: "NodeJS", configKey: "nodejsIsEnabled" },
+                { name: "HTML", configKey: "htmlIsEnabled" },
+                { name: "C#", configKey: "csharpIsEnabled" },
+                { name: "C++", configKey: "cplusplusIsEnabled" },
+                { name: "C", configKey: "cIsEnabled" },
+                { name: "Ruby", configKey: "rubyIsEnabled" },
+                { name: "Rust", configKey: "rustIsEnabled" },
+                { name: "Batch", configKey: "batchIsEnabled" },
+                { name: "CMD", configKey: "cmdIsEnabled" },
+                { name: "Bash", configKey: "bashIsEnabled" }
+            ];
+        
+            // Filter out file types that are not enabled in the configuration
+            for (let i = enabledFileTypes.length - 1; i >= 0; i--) {
+                const fileType = enabledFileTypes[i];
+                const isEnabled = config.get(fileType.configKey);
+        
+                if (!isEnabled) {
+                    const index = fileTypes.indexOf(fileType.name);
+                    if (index !== -1) {
+                        fileTypes.splice(index, 1);
+                    }
+                }
+            }
+
+            if (fileTypes.length === 0) {
+                vscode.window.showErrorMessage('At least one file type must be enabled to create a snippet.');
+                return;
+            }
+            
             const selectedFileType = await vscode.window.showQuickPick(fileTypes, {
                 placeHolder: 'Select a file type',
                 canPickMany: false

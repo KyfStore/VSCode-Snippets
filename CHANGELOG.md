@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Added Settings For VSCode Snippets+
 - Rename/Open Snippet Options And New Languages; HTML
 - New Languages; Rust/Ruby
 - Initial release of VSCode Snippets+.
@@ -21,16 +22,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- Changed Java Class Deletion to be *.class instead of ${filename}.class as well as added Rust *.exe deletion.
 - No changes in this release.
 
 ### Removed
 
 - No removals in this release.
 
-## [1.0.3] - 2024-017-16
+## [1.0.3] - 2024-018-16
 
 ### Added
 
+- Added Settings For VSCode Snippets+
 - Rename/Open Snippet Options And New Languages; HTML
 - New Languages; Rust/Ruby
 - Initial release of VSCode Snippets+.
@@ -43,6 +46,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- Changed Java Class Deletion to be *.class instead of ${filename}.class as well as added Rust *.exe deletion.
 - No changes in this release.
 
 ### Removed

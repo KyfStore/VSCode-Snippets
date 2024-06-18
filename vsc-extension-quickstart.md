@@ -33,6 +33,28 @@ To run a snippet:
 
 **Note:** You may need to install certain programs to run specific file types, such as [Python](https://www.python.org/downloads/) for `.py` files or [Java](https://www.java.com/download/ie_manual.jsp) for `.java` files. Some files, like HTML Files (.html), Batch files (.bat), Bash files (.sh), or CMD files (.cmd), do not require additional programs.
 
+## VSCode Snippets+ Settings
+
+When you install VSCode Snippets+, there is a few options in your settings. Just go to your user/workspace settings. There are four options to open the settings of VSCode.
+
+1. The Button Way:
+
+    On the left-side of your vscode screen, there should be some side buttons. They should look like some files, a search bar, a debug button, extensions button, ect. The main one we are looking for is the settings cog icon. Press that and it will open the settings.
+
+2. Go Through File
+
+    At the top, you should see something called, "File" at the top. Go to `File - Preferences - Settings` and it will take you to your settings.
+
+3. Shortcut
+
+    Press `Ctrl + ,` to open settings.
+
+4. Command Pallete
+
+    There are two different ways to access the cmd pallete either use `Ctrl + Shift + P` to open cmd pallete or use `Ctrl + P` and type `>` to start a cmd. Search for `Preferences: Open Settings (UI)` and click it. It will take you to your settings menu.
+
+After getting into your settings search for `VSCode Snippets+ FileTypes`. You may have to scroll down to see the options. From here, you can select which filetypes you wish to use. By default, all of the options are picked.
+
 ### Requirements (Optional)
 
 - [G++/GCC](https://winlibs.com/#download-release)

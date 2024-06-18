@@ -3,8 +3,9 @@
   "displayName": "VSCode Snippets+",
   "publisher": "KyfStore",
   "description": "Create very useful code snippets along your coding journey. Have a file you run to build your project? Consider making a snippet for it with VSCode Snippets!",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "repository": {
+    "type": "git",
     "url": "https://github.com/KyfStore/VSCode-Snippets.git"
   },
   "engines": {
@@ -22,7 +23,9 @@
     "onCommand:vscode-snippetsplus.cs",
     "onCommand:vscode-snippetsplus.ds",
     "onCommand:vscode-snippetsplus.brs",
-    "onCommand:vscode-snippetsplus.os"
+    "onCommand:vscode-snippetsplus.os",
+    "onCommand:vscode-snippetsplus.rs",
+    "onWorkspaceFilesCreated"
   ],
   "main": "./extension.js",
   "contributes": {
@@ -45,7 +48,7 @@
       },
       {
         "command": "vscode-snippetsplus.rs",
-        "title": "VScode Snippets+ | Rename Snippet"
+        "title": "VSCode Snippets+ | Rename Snippet"
       }
     ],
     "viewsContainers": {
@@ -73,6 +76,84 @@
           "group": "inline"
         }
       ]
+    },
+    "configuration": {
+      "type": "object",
+      "title": "VSCode Snippets+ Filetypes",
+      "properties": {
+        "vscode-snippetsplus.pyIsEnabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable feature for Python filetype.",
+          "scope": "resource"
+        },
+        "vscode-snippetsplus.javaIsEnabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable feature for Java filetype.",
+          "scope": "resource"
+        },
+        "vscode-snippetsplus.nodejsIsEnabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable feature for NodeJS filetype.",
+          "scope": "resource"
+        },
+        "vscode-snippetsplus.htmlIsEnabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable feature for HTML filetype.",
+          "scope": "resource"
+        },
+        "vscode-snippetsplus.csharpIsEnabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable feature for C# filetype.",
+          "scope": "resource"
+        },
+        "vscode-snippetsplus.cplusplusIsEnabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable feature for C++ filetype.",
+          "scope": "resource"
+        },
+        "vscode-snippetsplus.cIsEnabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable feature for C filetype.",
+          "scope": "resource"
+        },
+        "vscode-snippetsplus.rubyIsEnabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable feature for Ruby filetype.",
+          "scope": "resource"
+        },
+        "vscode-snippetsplus.rustIsEnabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable feature for Rust filetype.",
+          "scope": "resource"
+        },
+        "vscode-snippetsplus.batchIsEnabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable feature for Batch filetype.",
+          "scope": "resource"
+        },
+        "vscode-snippetsplus.cmdIsEnabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable feature for CMD filetype.",
+          "scope": "resource"
+        },
+        "vscode-snippetsplus.bashIsEnabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable feature for Bash filetype.",
+          "scope": "resource"
+        }
+      }
     }
   },
   "scripts": {

@@ -82,8 +82,8 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 ## Changelog
 
-See the Changelog for more information.
+See the (Changelog)[CHANGELOG.md] for more information.
 
 ## Startup
 
-See Startup for more information.
+See (Startup.md)[vsc-extension-quickstart.md] for more information.
